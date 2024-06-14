@@ -125,7 +125,7 @@ const Signup = () => {
                       onClick={() => handleClick('PROFESSIONAL')}
                       className={`px-4 py-2 rounded-md w-full transition-colors focus:outline-none ${
                         selectedOption === 'PROFESSIONAL'
-                          ? 'bg-indigo-600 text-white'
+                          ? 'theme-red-bg text-white'
                           : 'bg-gray-300 text-gray-700'
                       }`}
                     >
@@ -136,7 +136,7 @@ const Signup = () => {
                       onClick={() => handleClick('RECRUITER')}
                       className={`px-4 py-2 rounded-md  w-full transition-colors focus:outline-none ${
                         selectedOption === 'RECRUITER'
-                          ? 'bg-indigo-600 text-white'
+                          ? 'theme-red-bg text-white'
                           : 'bg-gray-300 text-gray-700'
                       }`}
                     >
@@ -219,7 +219,7 @@ const Signup = () => {
                     <div className="text-sm">
                       <a
                         href="#"
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                        className="font-semibold theme-red-color hover:theme-red-color"
                       >
                         Forgot password?
                       </a>
@@ -243,7 +243,7 @@ const Signup = () => {
                   <button
                     disabled={isLoading}
                     type="submit"
-                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center rounded-md theme-red-bg px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:theme-red-color focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:bg-indigo-500"
                   >
                     {isLoading ? (
                       <>
@@ -259,7 +259,7 @@ const Signup = () => {
             <p className="mt-10 text-center text-sm text-gray-500">
               Already a user?{' '}
               <Link href="/login" passHref>
-                <a className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                <a className="font-semibold leading-6 theme-red-color hover:theme-red-color">
                   Login
                 </a>
               </Link>

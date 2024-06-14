@@ -118,12 +118,19 @@ const Employer = () => {
           <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
             <p>
               Your all <br />
-              <span className="text-blue-500">PROFESSIONAL</span> needs at
+              <span className="theme-red-color">PROFESSIONAL</span> needs at
               Pragati with charges range from <br />
-              <span className="text-blue-500">₹99 to ₹999</span>.
+              <span className="theme-red-color">₹99 to ₹999</span>.
             </p>
           </blockquote>
         </div>
+        <button
+          type="submit"
+          onClick={() => router.push('/employer/live')}
+          className="mt-4 flex mx-auto items-center justify-center rounded-md border border-transparent theme-red-bg px-8 py-3 text-base font-medium text-white hover:theme-red-bg focus:outline-none focus:ring-2 focus:theme-red-bg focus:theme-red-bg2"
+        >
+          Know existing requests
+        </button>
 
         <form className="mt-12" onSubmit={handleRequestSubmit}>
           <Listbox value={selected} onChange={handleJobSelect}>
@@ -377,7 +384,7 @@ const Employer = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="rounded-md w-full bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md w-full theme-red-bg px-3 py-2 text-sm font-semibold text-white shadow-sm hover:theme-red-bg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:theme-red-bg"
             >
               Proceed
             </button>

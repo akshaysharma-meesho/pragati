@@ -126,22 +126,22 @@ export default function Login() {
                       onClick={() => handleClick('PROFESSIONAL')}
                       className={`px-4 py-2 rounded-md w-full transition-colors focus:outline-none ${
                         selectedOption === 'PROFESSIONAL'
-                          ? 'bg-indigo-600 text-white'
+                          ? 'theme-red-bg text-white'
                           : 'bg-gray-300 text-gray-700'
                       }`}
                     >
-                      Professional
+                      Professionals
                     </button>
                     <button
                       type="button"
                       onClick={() => handleClick('RECRUITER')}
                       className={`px-4 py-2 rounded-md  w-full transition-colors focus:outline-none ${
                         selectedOption === 'RECRUITER'
-                          ? 'bg-indigo-600 text-white'
+                          ? 'theme-red-bg text-white'
                           : 'bg-gray-300 text-gray-700'
                       }`}
                     >
-                      Recruiter
+                      Customers
                     </button>
                   </div>
                 </div>
@@ -175,10 +175,7 @@ export default function Login() {
                       Password
                     </label>
                     <div className="text-sm">
-                      <a
-                        href="#"
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
-                      >
+                      <a href="#" className="font-semibold theme-red-color">
                         Forgot password?
                       </a>
                     </div>
@@ -192,7 +189,7 @@ export default function Login() {
                       required
                       value={formData.password}
                       onChange={handleChange}
-                      className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:theme-red-color sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -201,7 +198,7 @@ export default function Login() {
                   <button
                     disabled={isLoading}
                     type="submit"
-                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center rounded-md theme-red-bg px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     {isLoading ? (
                       <>
@@ -217,7 +214,7 @@ export default function Login() {
               <p className="mt-10 text-center text-sm text-gray-500">
                 Not a member?{' '}
                 <Link href="/signup" passHref>
-                  <a className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                  <a className="font-semibold leading-6 theme-red-color hover:theme-red-color">
                     Sign up
                   </a>
                 </Link>

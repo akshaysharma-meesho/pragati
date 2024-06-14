@@ -32,3 +32,12 @@ a:hover {
   border: 2px solid green !important;
   border-radius: 10px;
 }
+
+
+.theme-red-bg{
+  background-color: #ec4755;
+}
+
+.theme-red-color{
+  color: #ec4755;
+}

@@ -109,7 +109,7 @@ const ProfessionalSkills = () => {
                     {product.skillName}
                   </h3>
                   <p className="mt-1 text-xs font-medium text-gray-900 px-2">
-                    Income : {product.rate} to {product.rate}
+                    Income : Min. {product.rate}
                   </p>
                 </a>
               ))}
@@ -126,7 +126,7 @@ const ProfessionalSkills = () => {
           <button
             type="submit"
             onClick={handleSkillsSubmit}
-            className="rounded-md bg-indigo-600 px-3 w-full py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md theme-red-bg px-3 w-full py-2 text-sm font-semibold text-white shadow-sm hover:theme-red-bg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             {isLoading ? (
               <div className="flex flex-center justify-center">

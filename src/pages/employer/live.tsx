@@ -55,7 +55,7 @@ const EmployerLive = () => {
             <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
               <p>
                 You have opted for <br />
-                <span className="text-blue-500">
+                <span className="theme-red-color">
                   {activeJobRequests?.[0]?.skill
                     ? activeJobRequests?.[0]?.skill.split('_').join(' ')
                     : 'DELIVERY AGENT'}
@@ -66,7 +66,7 @@ const EmployerLive = () => {
             <button
               type="submit"
               onClick={() => router.push('/employer')}
-              className="mt-4 flex mx-auto items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="mt-4 flex mx-auto items-center justify-center rounded-md border border-transparent theme-red-bg px-8 py-3 text-base font-medium text-white hover:theme-red-bg focus:outline-none focus:ring-2 focus:theme-red-bg focus:ring-offset-2"
             >
               Post New Job
             </button>
@@ -87,23 +87,34 @@ const EmployerLive = () => {
           ) : (
             <>
               {activeJobRequests?.map((job: any, index: number) => (
-                <div className="flex min-w-0 gap-x-4 mt-6" key={index}>
-                  <img
-                    className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                    src={
-                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                    }
-                    alt=""
-                  />
-                  <div className="min-w-0 flex-auto">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">
-                      {job?.skills ? job?.skills : 'Delivery Boy'}
-                    </p>
-                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                      {formatDate(job?.timeline?.startDate)}
-                    </p>
-                  </div>
-                </div>
+                <>
+                  <p className="mt-2 text-base leading-7 text-gray-600">
+                    You have a active job requests of{' '}
+                    <span className="text-blue-500">
+                      {activeJobRequests?.[0]?.skill.split('_').join(' ')}
+                    </span>
+                  </p>
+
+                  {job?.userDetailsEntityList?.map(
+                    (user: any, index2: number) => (
+                      <div className="flex min-w-0 gap-x-4 mt-6" key={index}>
+                        <img
+                          className="h-12 w-12 flex-none rounded-full bg-gray-50"
+                          src={'https://www.gravatar.com/avatar/?d=identicon'}
+                          alt="avatar"
+                        />
+                        <div className="min-w-0 flex-auto" key={index2}>
+                          <p className="text-sm font-semibold leading-6 text-gray-900">
+                            {user?.name ? user?.name : 'Delivery Boy'}
+                          </p>
+                          <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                            {formatDate(job?.timeline?.startDate)}
+                          </p>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </>
               ))}
             </>
           )}
@@ -111,7 +122,7 @@ const EmployerLive = () => {
 
         <div className="border-t border-gray-300 my-4"></div>
         <h2 className="text-base font-semibold leading-7 text-gray-900">
-          Previous Consignments -
+          Pending Consignments -
         </h2>
         {!previousJobRequests?.length ? (
           <div className="text-center">
@@ -130,9 +141,7 @@ const EmployerLive = () => {
                   <div className="flex min-w-0 gap-x-4">
                     <img
                       className="h-12 w-12 flex-none rounded-full bg-gray-50 opacity-50 filter grayscale pointer-events-none"
-                      src={
-                        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-                      }
+                      src={'https://www.gravatar.com/avatar/?d=identicon'}
                       alt=""
                     />
                     <div className="min-w-0 flex-auto">
