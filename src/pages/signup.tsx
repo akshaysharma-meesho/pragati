@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Loader } from '../components/Loader';
 
 const Signup = () => {
+  const router = useRouter();
   const [selectedOption, setSelectedOption] = useState('PROFESSIONAL');
   const [formData, setFormData] = useState({
     name: '',
@@ -15,6 +17,7 @@ const Signup = () => {
     password: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [errorData, setErrorData] = useState('');
 
   const handleClick = (option: any) => {
     setSelectedOption(option);
@@ -26,6 +29,31 @@ const Signup = () => {
       ...formData,
       [name]: value,
     });
+  };
+
+  const fetchProfessionalData = async (id: string) => {
+    setIsLoading(false);
+    try {
+      const response = await axios.get(
+        `http://35.200.228.175:8080/v1/user/get-professional-user-details?userId=${id}`
+      );
+      if (!response.data.kycVerified) {
+        router.push('/professional/kyc');
+        return;
+      }
+      if (response.data.skills.length === 0) {
+        router.push('/professional/skills');
+        return;
+      }
+      if (response.data.skills.length > 0 && response.data.kycVerified) {
+        router.push('/professional/live');
+        return;
+      }
+    } catch (error: any) {
+      setErrorData(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSubmit = async (e: any) => {
@@ -46,9 +74,14 @@ const Signup = () => {
         'http://35.200.228.175:8080/v1/user/login-register',
         dataPayload
       );
-      console.log('Response:', response.data);
-    } catch (error) {
-      console.error('Error:', error);
+      localStorage.setItem('userType', selectedOption);
+      localStorage.setItem('token', response.data.userId);
+
+      if (selectedOption === 'PROFESSIONAL') {
+        fetchProfessionalData(response.data.userId);
+      }
+    } catch (error: any) {
+      setErrorData(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -221,6 +254,11 @@ const Signup = () => {
                 </a>
               </Link>
             </p>
+            {errorData && (
+              <div className="mt-4 text-sm text-red-600 bg-red-100 p-2 rounded">
+                {errorData}
+              </div>
+            )}
           </div>
         </body>
       </html>
