@@ -9,8 +9,8 @@ export const chunkArr = <T>(arr: Array<T>, chunkSize: number) => {
 export const formatDate = (dateString: string) => {
   const date = new Date(dateString);
 
-  const options = {
-    weekday: 'long' as const, // Full weekday name
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long', // Full weekday name
     year: 'numeric',
     month: 'long', // Full month name
     day: 'numeric',

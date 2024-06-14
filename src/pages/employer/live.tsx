@@ -29,6 +29,8 @@ const EmployerLive = () => {
     }
   };
 
+  console.log(isLoading);
+
   useEffect(() => {
     fetchRecruiterDetails();
   }, []);
