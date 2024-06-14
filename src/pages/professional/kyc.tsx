@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import Head from 'next/head';
@@ -9,7 +9,6 @@ import Navbar from '../../components/Navbar';
 
 const ProfessionKYC = () => {
   const router = useRouter();
-  const userType = localStorage.getItem('userType') ?? '';
   const [isLoading, setIsLoading] = useState(false);
   const [errorData, setErrorData] = useState('');
   const [formData, setFormData] = useState({
@@ -42,10 +41,16 @@ const ProfessionKYC = () => {
     };
 
     try {
+      const userType = localStorage.getItem('userType');
       const response = await axios.post(
         'http://35.200.228.175:8080/v1/user/edit-professional-user-details',
         dataPayload
       );
+
+      if (response.data.userType === 'RECRUITER') {
+        router.push('/employer');
+        return;
+      }
 
       if (userType === 'PROFESSIONAL') {
         if (response.data.kycVerified) {
@@ -81,6 +86,13 @@ const ProfessionKYC = () => {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    const userType = localStorage.getItem('userType');
+    if (userType === 'RECRUITER') {
+      router.push('/employer');
+    }
+  }, []);
 
   return (
     <>

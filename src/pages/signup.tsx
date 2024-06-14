@@ -37,14 +37,22 @@ const Signup = () => {
       const response = await axios.get(
         `http://35.200.228.175:8080/v1/user/get-professional-user-details?userId=${id}`
       );
+
+      if (response.data.userType === 'RECRUITER') {
+        router.push('/employer');
+        return;
+      }
+
       if (!response.data.kycVerified) {
         router.push('/professional/kyc');
         return;
       }
+
       if (response.data.skills.length === 0) {
         router.push('/professional/skills');
         return;
       }
+
       if (response.data.skills.length > 0 && response.data.kycVerified) {
         router.push('/professional/live');
         return;
@@ -79,6 +87,8 @@ const Signup = () => {
 
       if (selectedOption === 'PROFESSIONAL') {
         fetchProfessionalData(response.data.userId);
+      } else {
+        router.push('/employer');
       }
     } catch (error: any) {
       setErrorData(error.message);

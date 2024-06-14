@@ -36,6 +36,13 @@ export default function Login() {
         `http://35.200.228.175:8080/v1/user/get-professional-user-details?userId=${id}`
       );
 
+      localStorage.setItem('userType', response.data.userType);
+
+      if (response.data.userType === 'RECRUITER') {
+        router.push('/employer');
+        return;
+      }
+
       if (response.data.kycVerified) {
         localStorage.setItem('isKYCDone', response.data.kycVerified);
       }
@@ -77,8 +84,11 @@ export default function Login() {
       );
       localStorage.setItem('userType', selectedOption);
       localStorage.setItem('token', response.data.userId);
+
       if (selectedOption === 'PROFESSIONAL') {
         fetchProfessionalData(response.data.userId);
+      } else {
+        router.push('/employer');
       }
     } catch (error: any) {
       setErrorData(error.message);

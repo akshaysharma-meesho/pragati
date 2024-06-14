@@ -5,17 +5,6 @@ import Link from 'next/link';
 
 import Navbar from '../../components/Navbar';
 
-// {
-//   type: "professional",
-//   skillset: [],
-//   availability: [],
-//   address: string,
-//   phone: string,
-//   photo: string,
-//   kycStatus: boolean,
-//   documents: string[],
-// }
-
 const Professional = () => {
   const response = {
     type: 'professional',
