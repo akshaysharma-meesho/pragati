@@ -376,12 +376,18 @@ const Employer = () => {
             </button>
             <button
               type="submit"
+              disabled={isLoading}
               className="rounded-md w-full bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Proceed
             </button>
           </div>
         </form>
+        {errorDetails && (
+          <div className="mt-4 text-sm text-red-600 bg-red-100 p-2 rounded">
+            {errorDetails}
+          </div>
+        )}
       </div>
     </>
   );
